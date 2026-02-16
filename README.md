@@ -35,20 +35,7 @@ Bash
 pip install flask pandas numpy scikit-learn
 
 
-3. Generate the Model File (The "Back End")
-Since this is a partial build, the trained model file (model.pkl) might not exist yet. We need to create it using Aaron's logic.
-
-Run the training script:
-
-Bash
-python train_model.py
-Check for success:
-Look at your folder. You should now see a new file named model.pkl (or student_grade_model.pkl).
-
-Note: If this fails, check that student-mat.csv is in the same folder.
-
-
-4. Launch the Web Interface (The "Front End")
+3. Launch the Web Interface (The "Front End")
 Now that the model file exists, we can start your Flask server.
 
 Run the application:
@@ -63,7 +50,7 @@ Plaintext
 * Debug mode: on
 
   
-5. Test the Application
+4. Test the Application
 Open your web browser (Chrome, Edge, etc.).
 
 Type in the address: http://127.0.0.1:5000/
