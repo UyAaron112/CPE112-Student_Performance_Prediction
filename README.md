@@ -9,8 +9,11 @@ Before running anything, ensure your folder looks exactly like this so Python ca
 Plaintext
 /Student_Project
     ├── app.py                 <-- (Ej's Flask Server)
+    
     ├── train_model.py         <-- (Aaron's Training Script)
+    
     ├── student-mat.csv        <-- (Gary's Dataset)
+    
     ├── templates/
     │   ├── login.html
     │   └── dashboard.html
