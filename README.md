@@ -8,6 +8,7 @@ Before running anything, ensure your folder looks exactly like this so Python ca
 
 Plaintext
 /Student_Project
+
     ├── app.py                
     ├── train_model.py         
     ├── student-mat.csv        
