@@ -4,7 +4,6 @@ from flask_login import LoginManager, UserMixin, login_user, login_required, log
 from werkzeug.security import generate_password_hash, check_password_hash
 import os
 
-# --- 1. INITIALIZATION (Must come first!) ---
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'mysecretkey'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
@@ -15,7 +14,6 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-# --- 2. DATABASE MODEL ---
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(150), unique=True, nullable=False)
@@ -32,7 +30,6 @@ class User(UserMixin, db.Model):
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-# --- 3. ROUTES ---
 
 @app.route('/', methods=['GET', 'POST'])
 def login():
@@ -53,7 +50,6 @@ def login():
             
     return render_template('login.html')
 
-# --- THIS IS THE NEW REGISTER ROUTE ---
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     if current_user.is_authenticated:
@@ -77,7 +73,6 @@ def register():
         return redirect(url_for('login'))
 
     return render_template('register.html')
-# --------------------------------------
 
 @app.route('/dashboard', methods=['GET', 'POST'])
 @login_required
@@ -87,7 +82,6 @@ def dashboard():
     
     if request.method == 'POST':
         try:
-            # Simple dummy logic for now
             study_time = float(request.form.get('study_time'))
             failures = int(request.form.get('failures'))
             absences = int(request.form.get('absences'))
@@ -120,7 +114,6 @@ def logout():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-        # Create test admin if missing
         if not User.query.filter_by(username='admin').first():
             print("Creating test user: admin")
             admin = User(username='admin', role='admin')
