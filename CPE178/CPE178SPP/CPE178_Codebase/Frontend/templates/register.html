@@ -93,6 +93,22 @@
     <div class="register-card">
         <h2>Create an Account</h2>
         
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    {% if category == 'error' %}
+                    <div style="margin-bottom: 20px; padding: 12px; background-color: #fee2e2; border-radius: 6px; text-align: center; border: 1px solid #ef4444;">
+                        <span style="color: #b91c1c; font-weight: 600; font-size: 0.9rem;">⚠️ {{ message }}</span>
+                    </div>
+                    {% elif category == 'success' %}
+                    <div style="margin-bottom: 20px; padding: 12px; background-color: #ecfdf5; border-radius: 6px; text-align: center; border: 1px solid #10b981;">
+                        <span style="color: #047857; font-weight: 600; font-size: 0.9rem;">✅ {{ message }}</span>
+                    </div>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
         <form action="/register" method="POST">
             <div class="input-group">
                 <input type="text" name="username" placeholder="Choose a Username" required>
