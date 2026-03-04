@@ -9,14 +9,34 @@ Before running anything, ensure your folder looks exactly like this so Python ca
 Plaintext
 /Student_Project
 
-    ├── app.py                
-    ├── train_model.py         
-    ├── student-mat.csv        
-    ├── templates/
-    │   ├── login.html
-    │   └── dashboard.html
-    └── static/
-        └── style.css
+    ├── Backend/
+    │    └── api.py
+    │    └── test_api.py
+    ├── Data/
+    │    └── student-mat.csv
+    ├── Dataset_loading/
+    │    └── data_loading.ipynb
+    ├── Environment/
+    │    └── environment setup.ipynb
+    │    └── requirements.txt
+    ├── Frontend/   
+    │    └── instance/
+    │        └── users.db
+    │    └── static/
+    │        └── style.css
+    │    └── templates/
+    │        └── dashboard.html
+    │        └── login.html
+    │        └── regiser.html
+    │    └── app.py
+    ├── Model/
+    │    └── model.pkl
+    │    └── scaler.pkl
+    ├── Model Training/
+    │    └── Student_tst.ipynb
+    ├── Preprocessing
+    │    └── preprocessing.ipynb
+        
 
         
 2. Environment Setup
@@ -33,7 +53,7 @@ Copy and paste this command to install all necessary tools at once:
 
 Bash
 pip install flask pandas numpy scikit-learn
-
+pip intsall flask_login request flask_sqlalchemy
 
 3.  Launch the Backend (api.py) in the terminal
 
