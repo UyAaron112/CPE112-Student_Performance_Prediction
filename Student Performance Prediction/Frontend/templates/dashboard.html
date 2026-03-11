@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapúa SPPS Dashboard</title>
+    <style>
+        :root {
+            --mapua-red: #8A1538; 
+            --mapua-gold: #FFC72C; 
+            --bg-color: #f4f7f6;
+            --sidebar-bg: #8A1538; /* Cardinal Red Sidebar */
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            display: flex;
+            height: 100vh;
+        }
+        /* Sidebar Styling */
+        .sidebar {
+            width: 250px;
+            background-color: var(--sidebar-bg);
+            color: var(--text-light);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+        }
+        .sidebar-top {
+            padding: 20px;
+        }
+        .sidebar-logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--mapua-gold); /* Gold text for the logo */
+        }
+        .nav-item {
+            padding: 15px 20px;
+            color: rgba(255,255,255,0.9);
+            text-decoration: none;
+            display: block;
+            font-weight: 500;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+        .nav-item.active {
+            background-color: rgba(255, 199, 44, 0.2); /* Slight gold tint for active tab */
+            color: var(--mapua-gold);
+            border-left: 4px solid var(--mapua-gold);
+        }
+        .logout-btn {
+            background-color: rgba(0,0,0,0.2);
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+            margin: 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+        .logout-btn:hover {
+            background-color: rgba(0,0,0,0.4);
+        }
+        /* Main Content Styling */
+        .main-content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            margin: 0;
+            color: var(--text-dark);
+            font-size: 2rem;
+            font-weight: bold;
+            color: #4b5563;
+        }
+        /* Card & Form Styling */
+        .card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 600px;
+            border-top: 4px solid var(--mapua-red); /* Red accent on top of card */
+        }
+        .card h3 {
+            margin-top: 0;
+            color: var(--mapua-red);
+        }
+        .card p {
+            color: #6b7280;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4b5563;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            box-sizing: border-box; 
+            font-family: inherit;
+            color: #374151;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--mapua-red);
+            box-shadow: 0 0 0 3px rgba(138, 21, 56, 0.15);
+        }
+        .btn-primary {
+            background-color: var(--mapua-gold);
+            color: #333; /* Dark text for contrast against gold */
+            border: none;
+            padding: 14px;
+            width: 100%;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: background-color 0.2s;
+        }
+        .btn-primary:hover {
+            background-color: #e6b422; /* Slightly darker gold */
+        }
+        .badge {
+            background: var(--mapua-red);
+            color: white;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sidebar">
+        <div class="sidebar-top">
+            <div class="sidebar-logo">Student Performance Prediction System</div>
+            <a href="#" class="nav-item active">📈 Predict Performance</a>
+            <a href="#" class="nav-item">👥 Student List</a>
+            <a href="#" class="nav-item">⚙️ Settings</a>
+        </div>
+        <a href="/logout" class="logout-btn">🚪 Logout</a>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h1>Student Assessment</h1>
+            <div style="color: #6b7280;">Welcome, <strong>admin</strong> <span class="badge">admin</span></div>
+        </div>
+
+        <div class="card">
+            <h3>Enter Student Data</h3>
+            <p>Input academic and behavioral metrics to assess risk level.</p>
+
+            <form action="/dashboard" method="POST">
+                <div class="form-group">
+                    <label for="G1">First Period Grade (G1)</label>
+                    <input type="number" id="G1" name="G1" class="form-control" placeholder="e.g. 14" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="G2">Second Period Grade (G2)</label>
+                    <input type="number" id="G2" name="G2" class="form-control" placeholder="e.g. 15" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="studytime">Weekly Study Time (Hours)</label>
+                    <input type="number" step="0.1" id="studytime" name="studytime" class="form-control" placeholder="e.g. 5.5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="failures">Past Class Failures</label>
+                    <input type="number" id="failures" name="failures" class="form-control" placeholder="e.g. 0" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="absences">Number of Absences</label>
+                    <input type="number" id="absences" name="absences" class="form-control" placeholder="e.g. 2" required>
+                </div>
+
+                <button type="submit" class="btn-primary">Analyze Risk</button>
+            </form>
+
+            {% if prediction %}
+            <div style="margin-top: 25px; padding: 15px; background-color: #fffbeb; border-radius: 8px; text-align: center; border: 1px solid #fde68a;">
+                <h3 style="color: #92400e; margin: 0;">Predicted Final Grade (G3): {{ prediction }}</h3>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+</body>
+</html>
